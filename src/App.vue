@@ -7,18 +7,18 @@ const shoppingIcons =ref('material-icons shopping-cart-icon');
 //creando una referencia para
   //almacenar elvalor de una lista
   const items = ref([
-    {id: 1, label:'Leche'},
-   { id: 1, label:'Arroz'}
-    {id: 1, label:'Carne'},
-   {id: 1, label:'Pan'},
-   {id: 1, label:'huevos'}
+   {id: 0, label:'Leche'},
+   {id: 1, label:'Arroz'},
+   {id: 2, label:'Carne'},
+   {id: 3, label:'Pan'},
+   {id: 4, label:'huevos'}
   ])
 </script>
 
 <template>
-  <h1><i :class="shoppingIcons">local_ mall</i> {{ header }}</h1>
+  <h1><i :class="shoppingIcons">local_mall</i> {{ header }}</h1>
   <ul>
-    <li v-for="item in items" divvi b-bind: key="item">⭐ {(item.label)}</li>
+    <li v-for="{id, label} in items" b-bind:key="id.">⭐ {{label}}</li>
   </ul>
 </template>
 
