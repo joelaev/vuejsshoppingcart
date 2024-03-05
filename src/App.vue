@@ -13,12 +13,15 @@ const shoppingIcons =ref('material-icons shopping-cart-icon');
    {id: 3, label:'Pan'},
    {id: 4, label:'huevos'}
   ])
+  const newItem =ref('')
 </script>
 
 <template>
   <h1><i :class="shoppingIcons">local_mall</i> {{ header }}</h1>
+  <input v-model="newItem" type="text" placheholder ="agregar articulo">
+
   <ul>
-    <li v-for="{id, label} in items" b-bind:key="id.">⭐ {{label}}</li>
+    <li v-for="{id, label} in items" b-bind:key="id">⭐ {{label}}</li>
   </ul>
 </template>
 
