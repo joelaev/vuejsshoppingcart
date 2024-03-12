@@ -13,12 +13,30 @@ const shoppingIcons =ref('material-icons shopping-cart-icon');
    {id: 3, label:'Pan'},
    {id: 4, label:'huevos'}
   ])
+  const newItem =ref('')
+  const newItemHighPriority =ref('false')
+  //metodos
+  const saveItems=()=>{
+    //agrega un nuevo item provenuente de la caja de texto
+    items.value.push({id: items.value.length, label:newItem.value})
+    //borrar contenido de la caja de texto
+    newItem.value=""
+  }
 </script>
 
 <template>
   <h1><i :class="shoppingIcons">local_mall</i> {{ header }}</h1>
-  <ul>
-    <li v-for="item in items" v-bind:key="item.id">⭐ {{item.label}}</li>
+  <form
+  v-on:submit.prevent="saveItems"
+   class="add-item form">
+  <input v-model="newItem" type="text" placeholder ="agregar articulo">
+  <label>
+    <input type="checkbox" v-model="newItemHighPriority" >Alta prioridad 
+  </label>
+  <button class="btn btn-primary">Agregar Articulo</button>
+  </form>
+    <ul>
+    <li v-for="{id, label} in items" v-bind:key="id">⭐ {{label}}</li>
   </ul>
 </template>
 
@@ -27,3 +45,8 @@ const shoppingIcons =ref('material-icons shopping-cart-icon');
 font-size: 2 rm;
 }
 </style>
+
+
+
+
+
