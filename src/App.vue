@@ -36,7 +36,7 @@ const shoppingIcons =ref('material-icons shopping-cart-icon');
     <h1><i :class="shoppingIcons">local_mall</i> {{ header }}
     </h1>
 
-    <button  v-on:click="doEdit(falce)" v-if="editing" 
+    <button  v-on:click="doEdit(false)" v-if="editing" 
     class="btn">Cancelar</button>
 
     <button v-else v-on:click="doEdit(true)"
