@@ -7,12 +7,15 @@ const shoppingIcons =ref('material-icons shopping-cart-icon');
 //creando una referencia para
   //almacenar elvalor de una lista
   const items = ref([
-   {id: 0, label:'Leche', purchased:false, highPriority: true},
-   {id: 1, label:'Arroz', purchased:false, highPriority: false},
-   {id: 2, label:'Carne', purchased:true, highPriority: true},
-   {id: 3, label:'Pan', purchased:false, highPriority: false},
-   {id: 4, label:'huevos', purchased:true, highPriority: true}
+  //  {id: 0, label:'Leche', purchased:false, highPriority: true},
+  //  {id: 1, label:'Arroz', purchased:false, highPriority: false},
+  //  {id: 2, label:'Carne', purchased:true, highPriority: true},
+  //  {id: 3, label:'Pan', purchased:false, highPriority: false},
+  //  {id: 4, label:'huevos', purchased:true, highPriority: true}
   ]);
+  const reverseItems=computed(()=>{
+    return [...items.value].reverse()});
+
   const togglePurchased=(item)=>{
     item.purchased=!item.purchased
   }; 
@@ -61,8 +64,8 @@ const shoppingIcons =ref('material-icons shopping-cart-icon');
   </form>
   <!-- entrega de lista -->
     <ul>
-    <li v-for="({id, label,purchased, highPriority}, index) in items" 
-    @click="togglePurchased(items[index])"
+    <li v-for="({id, label,purchased, highPriority}, index) in reverseItems" 
+    @click="togglePurchased(reverseItems[index])"
     :class="{priority:highPriority, strikeout:purchased}"
     v-bind:key="id">⭐ {{label}}</li>
   </ul>
