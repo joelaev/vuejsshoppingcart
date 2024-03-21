@@ -21,13 +21,15 @@ const shoppingIcons =ref('material-icons shopping-cart-icon');
   //metodos
   const saveItems=()=>{
     //agrega un nuevo item provenuente de la caja de texto
-    items.value.push({id: items.value.length, label:newItem.value})
+    items.value.push({id: items.value.length, label:newItem.value,
+    highPriority: newItemHighPriority.value })
     //borrar contenido de la caja de texto
     newItem.value="";
   }  
   const doEdit=(edit)=>{
     editing.value=edit
     newItem.value="";
+    newItemHighPriority.value =false;
   }
   const editing =ref(false)
 </script>
