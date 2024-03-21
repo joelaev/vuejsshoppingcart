@@ -1,6 +1,6 @@
 <script setup>
 //importndo una funcion para crear referencias reactivas
-import {ref} from 'vue'
+import {ref, computed} from 'vue'
 //crendo referencia constante activa (conjunto de variables es el "estado de componente")
 const header =ref('app lista de compras')
 const shoppingIcons =ref('material-icons shopping-cart-icon');
@@ -17,6 +17,8 @@ const shoppingIcons =ref('material-icons shopping-cart-icon');
     item.purchased=!item.purchased
   }; 
   const newItem =ref('')
+  const characterCount=computed(()=>{
+    return newItem.value.length})
   const newItemHighPriority =ref('false')
   //metodos
   const saveItems=()=>{
@@ -53,6 +55,9 @@ const shoppingIcons =ref('material-icons shopping-cart-icon');
     <input type="checkbox" v-model="newItemHighPriority" >Alta prioridad 
   </label>
   <button class="btn btn-primary">Agregar Articulo</button>
+  <p class="counter">
+    {{ characterCount }}/200
+  </p>
   </form>
   <!-- entrega de lista -->
     <ul>
